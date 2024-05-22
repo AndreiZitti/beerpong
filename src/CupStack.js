@@ -24,7 +24,16 @@ function CupStack({ scrollYRef }) {
       const bottomCup = groupRef.current.getObjectByName('BottomCup');
       if (bottomCup) {
         const scrollY = scrollYRef.current;
-        bottomCup.position.y = -(scrollY / window.innerHeight); // Adjust this value for smooth scroll and keeping it at the center
+        const viewportHeight = window.innerHeight;
+
+        // Adjust the bottom cup to stay aligned with the scroll position
+        console.log(scrollY);
+        console.log(viewportHeight);
+        bottomCup.position.y = -(scrollY / viewportHeight) * 0.7 ; // Adjust the multiplier for desired scroll speed
+        console.log(bottomCup.position.y);
+        // Keep the bottom cup in the center of the screen
+        bottomCup.position.x = 0;
+        bottomCup.position.z = 0;
       }
     }
   });
