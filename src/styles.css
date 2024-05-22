@@ -1,21 +1,59 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.main-container {
+  height: 300vh; /* Increased height */
+  background: url('BlueBack.jpg') no-repeat center center fixed; /* Ensure the correct path */
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: -1;
+}
+
+.title {
+  font-size: 4rem;
+  position: absolute; /* Fixed position */
+  top: 15vh; /* Position from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Centering trick */
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+  color: white; /* Ensure contrast */
+  z-index: 10;
+}
+
+.cta {
+  font-size: 1.5rem;
+  position: absolute; /* Fixed position */
+  top: 25vh; /* Position from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Centering trick */
+  text-align: center;
+  animation: fadeIn 2s ease-in-out 1s;
+  color: white; /* Ensure it is readable */
+  z-index: 10;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .title {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 4rem;
-    z-index: 1; /* Ensures the text is behind the cups */
-    pointer-events: none; /* Allows user interaction to pass through the text */
+  to {
+    opacity: 1;
   }
-  
-  canvas {
-    z-index: 2; /* Ensures the cups are in front of the text */
-  }
-  
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Ensure canvas is behind text */
+}

@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import CupStack from './CupStack';
@@ -22,17 +22,18 @@ function App() {
   }, []);
 
   return (
-    <div style={{ height: '30000vh', backgroundColor: 'black' }}>  {/* Increased height */}
+    <div className="main-container">
       <div className="title">AI PONG</div>
+      <div className="cta">Scroll down to see the magic!</div>
       <Canvas 
-        style={{ background: 'black', position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}
-        camera={{  fov: 35 }}  // Adjusting initial camera position to view from the side and closer
+        style={{ background: 'transparent', position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}
+        camera={{ fov: 35 }}
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={0.9} />
           <pointLight position={[10, 10, 10]} />
           <CupStack scrollYRef={scrollYRef} />
-          <OrbitControls enableZoom={false} />  {/* Disable zoom on touchpad scroll */}
+          <OrbitControls enableZoom={false} />
           <CameraController scrollYRef={scrollYRef} />
         </Suspense>
       </Canvas>
